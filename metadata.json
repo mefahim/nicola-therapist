@@ -1,0 +1,8 @@
+{
+  "name": "Nicola Benyahia — Trauma Therapist & Coach",
+  "description": "Trauma-informed therapy, signature RECLAIM™ programme, life coaching, and Lemmy Lou & Friends emotional wellbeing resources by Nicola Benyahia MBE.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
