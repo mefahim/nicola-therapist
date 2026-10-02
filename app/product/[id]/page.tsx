@@ -16,12 +16,15 @@ import {
   ArrowRight,
   PackageCheck,
   Check,
+  ShieldCheck,
+  Clock,
+  HelpCircle,
 } from 'lucide-react';
 
 export default function ProductDetailPage() {
   const params = useParams();
   const router = useRouter();
-  const { addItem } = useCart();
+  const { addItem, setIsOpen } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
 
@@ -31,7 +34,7 @@ export default function ProductDetailPage() {
   if (!product) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-24 text-center space-y-4">
-        <h1 className="font-serif text-3xl font-semibold text-[#1C1E1B]">Product Not Found</h1>
+        <h1 className="font-serif text-3xl font-semibold text-[#1C1E1B]">Resource Not Found</h1>
         <p className="text-sm text-[#787672]">The resource you are looking for does not exist.</p>
         <Link
           href="/resources"
@@ -52,21 +55,25 @@ export default function ProductDetailPage() {
   const handleAddToCart = () => {
     addItem(product, quantity);
     setAdded(true);
-    setTimeout(() => setAdded(false), 2000);
+    setTimeout(() => setAdded(false), 2500);
   };
 
   return (
     <div className="space-y-16 md:space-y-24 pb-24 pt-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Back Link */}
-        <div className="mb-6">
+        {/* Back Link Breadcrumb */}
+        <div className="mb-6 flex items-center justify-between">
           <Link
             href={isChildren ? '/lemmy-lou-and-friends' : '/resources'}
             className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#787672] hover:text-[#1C1E1B] transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Back to {isChildren ? 'Lemmy Lou & Friends' : 'Resources'}</span>
+            <span>Back to {isChildren ? 'Lemmy Lou & Friends Collection' : 'Resources Hub'}</span>
           </Link>
+
+          <span className="text-xs text-[#9C9A95]">
+            Resource ID: <span className="font-mono text-[#1C1E1B]">{product.id}</span>
+          </span>
         </div>
 
         {/* Product Grid */}
@@ -103,7 +110,7 @@ export default function ProductDetailPage() {
                 <PackageCheck className="w-4 h-4 text-[#4E6551]" />
                 <span>Format: {product.format}</span>
               </div>
-              <span>UK &amp; Global Availability</span>
+              <span className="font-medium text-[#4E6551]">Instant Digital Access Included</span>
             </div>
           </div>
 
@@ -115,7 +122,7 @@ export default function ProductDetailPage() {
                   isChildren ? 'text-[#0a8edb]' : 'text-[#A8543E]'
                 }`}
               >
-                {isChildren ? 'Lemmy Lou & Friends Collection' : 'RECLAIM™ Adult Pathway'}
+                {isChildren ? 'Lemmy Lou & Friends Collection' : 'RECLAIM™ Signature Pathway'}
               </span>
 
               <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1C1E1B] leading-tight">
@@ -136,7 +143,7 @@ export default function ProductDetailPage() {
               {product.longDescription}
             </p>
 
-            {/* Target Audience */}
+            {/* Target Audience Box */}
             <div className="p-4 bg-[#FAF8F5] rounded-xl border border-[#ECE7DE] space-y-1">
               <p className="text-xs font-semibold text-[#1C1E1B] uppercase tracking-wider">
                 Intended Audience:
@@ -144,54 +151,70 @@ export default function ProductDetailPage() {
               <p className="text-xs text-[#55534E] leading-relaxed">{product.audience}</p>
             </div>
 
-            {/* Purchase CTA */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-              <div className="flex items-center border border-[#D8D4CC] rounded-md bg-white">
+            {/* Purchase Controls & Micro-Feedback */}
+            <div className="space-y-3 pt-2">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                <div className="flex items-center border border-[#D8D4CC] rounded-md bg-white">
+                  <button
+                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                    className="px-3 py-2 text-sm text-[#787672] hover:text-[#1C1E1B] transition-colors cursor-pointer"
+                    aria-label="Decrease quantity"
+                  >
+                    -
+                  </button>
+                  <span className="px-4 text-sm font-semibold tabular-nums text-[#1C1E1B]">
+                    {quantity}
+                  </span>
+                  <button
+                    onClick={() => setQuantity(quantity + 1)}
+                    className="px-3 py-2 text-sm text-[#787672] hover:text-[#1C1E1B] transition-colors cursor-pointer"
+                    aria-label="Increase quantity"
+                  >
+                    +
+                  </button>
+                </div>
+
                 <button
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="px-3 py-2 text-sm text-[#787672] hover:text-[#1C1E1B] transition-colors"
+                  onClick={handleAddToCart}
+                  className={`flex-1 flex items-center justify-center gap-2 py-3 px-6 text-xs font-semibold uppercase tracking-wider rounded-md transition-all shadow-sm cursor-pointer ${
+                    isChildren
+                      ? 'bg-[#f43d86] hover:bg-[#d92c73] text-white rounded-full'
+                      : 'bg-[#A8543E] hover:bg-[#8D4431] text-white'
+                  }`}
                 >
-                  -
+                  {added ? (
+                    <>
+                      <Check className="w-4 h-4" />
+                      <span>Added to Bag!</span>
+                    </>
+                  ) : (
+                    <>
+                      <ShoppingBag className="w-4 h-4" />
+                      <span>Add to Bag</span>
+                    </>
+                  )}
                 </button>
-                <span className="px-4 text-sm font-semibold tabular-nums text-[#1C1E1B]">
-                  {quantity}
-                </span>
-                <button
-                  onClick={() => setQuantity(quantity + 1)}
-                  className="px-3 py-2 text-sm text-[#787672] hover:text-[#1C1E1B] transition-colors"
+
+                <Link
+                  href="/checkout"
+                  onClick={() => addItem(product, quantity)}
+                  className="inline-flex items-center justify-center py-3 px-6 bg-[#1C1E1B] hover:bg-[#333] text-white text-xs font-semibold uppercase tracking-wider rounded-md transition-colors"
                 >
-                  +
-                </button>
+                  Buy Now
+                </Link>
               </div>
 
-              <button
-                onClick={handleAddToCart}
-                className={`flex-1 flex items-center justify-center gap-2 py-3 px-6 text-xs font-semibold uppercase tracking-wider rounded-md transition-all shadow-sm ${
-                  isChildren
-                    ? 'bg-[#f43d86] hover:bg-[#d92c73] text-white rounded-full'
-                    : 'bg-[#A8543E] hover:bg-[#8D4431] text-white'
-                }`}
-              >
-                {added ? (
-                  <>
-                    <Check className="w-4 h-4" />
-                    <span>Added to Cart!</span>
-                  </>
-                ) : (
-                  <>
-                    <ShoppingBag className="w-4 h-4" />
-                    <span>Add to Bag</span>
-                  </>
-                )}
-              </button>
-
-              <Link
-                href="/checkout"
-                onClick={() => addItem(product, quantity)}
-                className="inline-flex items-center justify-center py-3 px-6 bg-[#1C1E1B] hover:bg-[#333] text-white text-xs font-semibold uppercase tracking-wider rounded-md transition-colors"
-              >
-                Buy Now
-              </Link>
+              {added && (
+                <div className="p-3 bg-[#EBF0EA] border border-[#4E6551]/30 rounded-xl flex items-center justify-between text-xs text-[#4E6551]">
+                  <span>Item added to your shopping bag.</span>
+                  <button
+                    onClick={() => setIsOpen(true)}
+                    className="font-bold underline hover:opacity-80 cursor-pointer"
+                  >
+                    Open Bag &rarr;
+                  </button>
+                </div>
+              )}
             </div>
 
             {/* Clinical / Ethical Safety Notice if provided */}
@@ -238,9 +261,19 @@ export default function ProductDetailPage() {
         {/* Related Products */}
         {relatedProducts.length > 0 && (
           <div className="pt-16 md:pt-24 border-t border-[#ECE7DE] space-y-8">
-            <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-[#1C1E1B]">
-              Related Resources
-            </h2>
+            <div className="flex items-center justify-between">
+              <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-[#1C1E1B]">
+                Related Resources
+              </h2>
+              <Link
+                href="/resources"
+                className="text-xs font-semibold text-[#A8543E] hover:underline flex items-center gap-1"
+              >
+                <span>View all</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {relatedProducts.map((rel) => (
                 <div

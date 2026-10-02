@@ -74,13 +74,21 @@ export function CartDrawer() {
                     Explore our trauma-informed adult workbooks or Lemmy Lou children&apos;s resources.
                   </p>
                 </div>
-                <div className="pt-2">
-                  <button
+                <div className="pt-2 flex flex-col gap-2 max-w-xs mx-auto">
+                  <Link
+                    href="/resources"
                     onClick={() => setIsOpen(false)}
                     className="inline-flex items-center justify-center px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white bg-[#A8543E] rounded-md hover:bg-[#8D4431] transition-colors"
                   >
-                    Browse Resources
-                  </button>
+                    Browse Adult Resources
+                  </Link>
+                  <Link
+                    href="/lemmy-lou-and-friends"
+                    onClick={() => setIsOpen(false)}
+                    className="inline-flex items-center justify-center px-4 py-2 text-xs font-semibold uppercase tracking-wider text-[#0a8edb] bg-[#e5f5ff] rounded-md hover:bg-[#d0ecff] transition-colors"
+                  >
+                    Browse Lemmy Lou Hub &rarr;
+                  </Link>
                 </div>
               </div>
             ) : (

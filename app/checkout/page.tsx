@@ -33,11 +33,13 @@ export default function CheckoutPage() {
   });
 
   const [isProcessing, setIsProcessing] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage('');
     if (!formData.termsAccepted) {
-      alert('Please review and accept the terms and refund policy to proceed.');
+      setErrorMessage('Please review and accept the terms of service and refund policy to proceed.');
       return;
     }
 
@@ -303,6 +305,12 @@ export default function CheckoutPage() {
                 <span>£{subtotal.toFixed(2)}</span>
               </div>
             </div>
+
+            {errorMessage && (
+              <div className="p-3 bg-[#FAF0EC] border border-[#E8C4B8] rounded-xl text-xs text-[#A8543E] font-medium">
+                {errorMessage}
+              </div>
+            )}
 
             <button
               type="submit"

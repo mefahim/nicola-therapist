@@ -1,36 +1,75 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Logo } from '@/components/ui/logo';
 import { useCart } from '@/lib/cart-context';
-import { ShoppingBag, Menu, X, ArrowRight, Calendar } from 'lucide-react';
+import {
+  ShoppingBag,
+  Menu,
+  X,
+  ArrowRight,
+  Calendar,
+  ChevronDown,
+  Sparkles,
+  HeartHandshake,
+  Compass,
+  Target,
+} from 'lucide-react';
 
-const NAV_LINKS = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'RECLAIM™', href: '/reclaim' },
-  { name: 'Therapy', href: '/therapy' },
-  { name: 'Coaching', href: '/coaching' },
-  { name: 'Resources', href: '/resources' },
-  { name: 'Lemmy Lou & Friends', href: '/lemmy-lou-and-friends' },
-  { name: 'Contact', href: '/contact' },
+const PATHWAYS = [
+  {
+    name: 'Trauma Therapy & EMDR',
+    href: '/therapy',
+    description: 'Clinical trauma processing, nervous system regulation & emotional safety',
+    badge: 'Clinical 1:1',
+    icon: HeartHandshake,
+  },
+  {
+    name: 'The RECLAIM™ Method',
+    href: '/reclaim',
+    description: 'Signature 6-stage framework for capable adults ready to step out of survival mode',
+    badge: 'Signature Method',
+    icon: Compass,
+  },
+  {
+    name: 'Transformational Coaching',
+    href: '/coaching',
+    description: 'Forward-focused partnership for confidence, boundaries & aligned action',
+    badge: 'Forward-Focused',
+    icon: Target,
+  },
 ];
 
 export function Header() {
   const pathname = usePathname();
   const { totalCount, setIsOpen } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const [prevPathname, setPrevPathname] = useState(pathname);
 
-  // Close menu during render when pathname changes
+  // Close menus during render when pathname changes
   if (prevPathname !== pathname) {
     setPrevPathname(pathname);
     setMobileMenuOpen(false);
+    setDropdownOpen(false);
   }
 
+  // Close dropdown on click outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setDropdownOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   const isLemmyLouRoute = pathname.startsWith('/lemmy-lou-and-friends');
+  const isPathwayActive = ['/therapy', '/reclaim', '/coaching'].includes(pathname);
 
   return (
     <header
@@ -55,6 +94,12 @@ export function Header() {
                 <span className="hidden sm:inline-block text-[11px] text-[#787672] border-l border-[#cad7e7] pl-3">
                   By Nicola Benyahia MBE
                 </span>
+                <Link
+                  href="/"
+                  className="hidden md:inline-flex items-center gap-1 text-[11px] font-semibold text-[#787672] hover:text-[#A8543E] ml-2 border border-[#cad7e7] px-2 py-0.5 rounded-full transition-colors"
+                >
+                  <span>&larr; Nicola Benyahia Practice</span>
+                </Link>
               </div>
             ) : (
               <Logo />
@@ -66,35 +111,135 @@ export function Header() {
             className="hidden lg:flex items-center gap-6 xl:gap-8 text-[13px] font-medium"
             aria-label="Main Navigation"
           >
-            {NAV_LINKS.map((link) => {
-              const isActive = pathname === link.href;
-              const isSpecial = link.href === '/lemmy-lou-and-friends';
+            <Link
+              href="/"
+              className={`transition-colors py-1 ${
+                pathname === '/' ? 'text-[#1C1E1B] font-semibold' : 'text-[#787672] hover:text-[#1C1E1B]'
+              }`}
+            >
+              Home
+            </Link>
 
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`transition-colors whitespace-nowrap relative py-1 ${
-                    isActive
-                      ? isSpecial
-                        ? 'text-[#f43d86] font-semibold'
-                        : 'text-[#1C1E1B] font-semibold'
-                      : isSpecial
-                      ? 'text-[#0a8edb] hover:text-[#f43d86]'
-                      : 'text-[#787672] hover:text-[#1C1E1B]'
+            <Link
+              href="/about"
+              className={`transition-colors py-1 ${
+                pathname === '/about' ? 'text-[#1C1E1B] font-semibold' : 'text-[#787672] hover:text-[#1C1E1B]'
+              }`}
+            >
+              About
+            </Link>
+
+            {/* Ways I Can Help Dropdown */}
+            <div
+              ref={dropdownRef}
+              className="relative"
+              onMouseEnter={() => setDropdownOpen(true)}
+              onMouseLeave={() => setDropdownOpen(false)}
+            >
+              <button
+                type="button"
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className={`flex items-center gap-1.5 py-1 transition-colors cursor-pointer ${
+                  isPathwayActive ? 'text-[#A8543E] font-semibold' : 'text-[#787672] hover:text-[#1C1E1B]'
+                }`}
+                aria-expanded={dropdownOpen}
+                aria-haspopup="true"
+              >
+                <span>Ways I Can Help</span>
+                <ChevronDown
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                    dropdownOpen ? 'rotate-180 text-[#A8543E]' : 'text-[#9C9A95]'
                   }`}
-                >
-                  {link.name}
-                  {isActive && (
-                    <span
-                      className={`absolute bottom-0 left-0 right-0 h-0.5 rounded-full ${
-                        isSpecial ? 'bg-[#f43d86]' : 'bg-[#A8543E]'
-                      }`}
-                    />
-                  )}
-                </Link>
-              );
-            })}
+                />
+              </button>
+
+              {dropdownOpen && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-80 xl:w-96 z-50">
+                  <div className="bg-white rounded-2xl border border-[#ECE7DE] p-3 shadow-xl space-y-1">
+                    <div className="px-3 py-2 border-b border-[#F2EFE9]">
+                      <p className="text-[10px] font-semibold uppercase tracking-wider text-[#A8543E]">
+                        Choose Your Support Pathway
+                      </p>
+                      <p className="text-[11px] text-[#787672] mt-0.5">
+                        Clear clinical, personal recovery, and coaching distinctions
+                      </p>
+                    </div>
+
+                    {PATHWAYS.map((path) => {
+                      const Icon = path.icon;
+                      const isActive = pathname === path.href;
+                      return (
+                        <Link
+                          key={path.href}
+                          href={path.href}
+                          className={`flex items-start gap-3 p-3 rounded-xl transition-colors ${
+                            isActive ? 'bg-[#FAF0EC] text-[#1C1E1B]' : 'hover:bg-[#FAF8F5] text-[#55534E]'
+                          }`}
+                        >
+                          <div className="w-8 h-8 rounded-lg bg-[#FAF8F5] border border-[#ECE7DE] text-[#A8543E] flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <Icon className="w-4 h-4" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center justify-between">
+                              <span className="font-serif text-sm font-semibold text-[#1C1E1B]">
+                                {path.name}
+                              </span>
+                              <span className="text-[9px] uppercase tracking-wider font-semibold text-[#787672] bg-[#FAF8F5] px-1.5 py-0.5 rounded">
+                                {path.badge}
+                              </span>
+                            </div>
+                            <p className="text-[11px] text-[#787672] line-clamp-2 mt-0.5 leading-snug">
+                              {path.description}
+                            </p>
+                          </div>
+                        </Link>
+                      );
+                    })}
+
+                    <div className="pt-2 border-t border-[#F2EFE9] px-3 py-1.5 flex items-center justify-between">
+                      <span className="text-[11px] text-[#787672]">Unsure which is right?</span>
+                      <Link
+                        href="/discovery-call"
+                        className="text-[11px] font-semibold text-[#A8543E] hover:underline flex items-center gap-1"
+                      >
+                        <span>Discuss on a free call</span>
+                        <ArrowRight className="w-3 h-3" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <Link
+              href="/resources"
+              className={`transition-colors py-1 ${
+                pathname === '/resources' ? 'text-[#1C1E1B] font-semibold' : 'text-[#787672] hover:text-[#1C1E1B]'
+              }`}
+            >
+              Resources
+            </Link>
+
+            <Link
+              href="/lemmy-lou-and-friends"
+              className={`transition-colors py-1 flex items-center gap-1 ${
+                pathname.startsWith('/lemmy-lou-and-friends')
+                  ? 'text-[#f43d86] font-semibold'
+                  : 'text-[#0a8edb] hover:text-[#f43d86]'
+              }`}
+            >
+              <span>Lemmy Lou &amp; Friends</span>
+              <span className="text-[#f43d86] text-xs">♥</span>
+            </Link>
+
+            <Link
+              href="/contact"
+              className={`transition-colors py-1 ${
+                pathname === '/contact' ? 'text-[#1C1E1B] font-semibold' : 'text-[#787672] hover:text-[#1C1E1B]'
+              }`}
+            >
+              Contact
+            </Link>
           </nav>
 
           {/* Zone 3: Actions (Cart & Primary Discovery Call CTA) */}
@@ -141,40 +286,91 @@ export function Header() {
 
       {/* Mobile Menu Overlay & Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 top-[65px] z-50 bg-[#FBF9F5] border-t border-[#ECE7DE] overflow-y-auto px-6 py-8 flex flex-col justify-between">
-          <div className="space-y-4">
-            <p className="text-[11px] font-medium tracking-widest uppercase text-[#787672]">
-              Menu Navigation
-            </p>
-            <nav className="space-y-2">
-              {NAV_LINKS.map((link) => {
-                const isActive = pathname === link.href;
-                const isSpecial = link.href === '/lemmy-lou-and-friends';
+        <div className="lg:hidden fixed inset-0 top-[65px] z-50 bg-[#FBF9F5] border-t border-[#ECE7DE] overflow-y-auto px-6 py-6 flex flex-col justify-between">
+          <div className="space-y-6">
+            {/* Ways to Work With Nicola Section */}
+            <div className="space-y-2">
+              <p className="text-[10px] font-semibold tracking-widest uppercase text-[#A8543E]">
+                Ways I Can Help
+              </p>
+              <div className="grid grid-cols-1 gap-2">
+                {PATHWAYS.map((p) => {
+                  const Icon = p.icon;
+                  return (
+                    <Link
+                      key={p.href}
+                      href={p.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="p-3 bg-white border border-[#ECE7DE] rounded-xl flex items-center justify-between"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-7 h-7 rounded-lg bg-[#FAF8F5] text-[#A8543E] flex items-center justify-center">
+                          <Icon className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <p className="font-serif text-sm font-semibold text-[#1C1E1B]">{p.name}</p>
+                          <p className="text-[10px] text-[#787672]">{p.badge}</p>
+                        </div>
+                      </div>
+                      <ArrowRight className="w-3.5 h-3.5 text-[#9C9A95]" />
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
 
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`flex items-center justify-between p-3 rounded-lg text-base font-medium transition-colors ${
-                      isActive
-                        ? isSpecial
-                          ? 'bg-[#ffe9f0] text-[#f43d86] font-semibold'
-                          : 'bg-[#ECE7DE] text-[#1C1E1B] font-semibold'
-                        : isSpecial
-                        ? 'text-[#0a8edb] hover:bg-[#ffe9f0]/50'
-                        : 'text-[#1C1E1B] hover:bg-[#F2EFE9]'
-                    }`}
-                  >
-                    <span>{link.name}</span>
-                    <ArrowRight className="w-4 h-4 opacity-50" />
-                  </Link>
-                );
-              })}
-            </nav>
+            {/* Core Practice Links */}
+            <div className="space-y-2 pt-2 border-t border-[#ECE7DE]">
+              <p className="text-[10px] font-semibold tracking-widest uppercase text-[#787672]">
+                Explore Practice
+              </p>
+              <nav className="space-y-1">
+                <Link
+                  href="/"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-between p-2.5 rounded-lg text-sm font-medium text-[#1C1E1B] hover:bg-[#ECE7DE]"
+                >
+                  <span>Home</span>
+                  <ArrowRight className="w-3.5 h-3.5 opacity-40" />
+                </Link>
+                <Link
+                  href="/about"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-between p-2.5 rounded-lg text-sm font-medium text-[#1C1E1B] hover:bg-[#ECE7DE]"
+                >
+                  <span>About Nicola</span>
+                  <ArrowRight className="w-3.5 h-3.5 opacity-40" />
+                </Link>
+                <Link
+                  href="/resources"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-between p-2.5 rounded-lg text-sm font-medium text-[#1C1E1B] hover:bg-[#ECE7DE]"
+                >
+                  <span>Resources &amp; Workbooks</span>
+                  <ArrowRight className="w-3.5 h-3.5 opacity-40" />
+                </Link>
+                <Link
+                  href="/lemmy-lou-and-friends"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-between p-2.5 rounded-lg text-sm font-bold text-[#0a8edb] bg-[#e5f5ff]/60"
+                >
+                  <span>Lemmy Lou &amp; Friends Children&apos;s Hub</span>
+                  <span className="text-[#f43d86]">♥</span>
+                </Link>
+                <Link
+                  href="/contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-between p-2.5 rounded-lg text-sm font-medium text-[#1C1E1B] hover:bg-[#ECE7DE]"
+                >
+                  <span>Contact &amp; Enquiries</span>
+                  <ArrowRight className="w-3.5 h-3.5 opacity-40" />
+                </Link>
+              </nav>
+            </div>
           </div>
 
-          <div className="pt-8 border-t border-[#ECE7DE] space-y-4">
+          {/* Bottom Actions */}
+          <div className="pt-6 border-t border-[#ECE7DE] space-y-3">
             <Link
               href="/discovery-call"
               onClick={() => setMobileMenuOpen(false)}
@@ -184,9 +380,9 @@ export function Header() {
               Book a Discovery Call
             </Link>
 
-            <div className="text-center text-xs text-[#787672] space-y-1">
-              <p>Nicola Benyahia MBE</p>
-              <p className="text-[11px]">BACP Accredited Counsellor • EMDR Trauma Therapist</p>
+            <div className="text-center text-xs text-[#787672]">
+              <p className="font-semibold text-[#1C1E1B]">Nicola Benyahia MBE</p>
+              <p className="text-[11px]">BACP Accredited Counsellor &bull; EMDR Trauma Specialist</p>
             </div>
           </div>
         </div>
