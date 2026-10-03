@@ -39,7 +39,7 @@ const CONTACT_FAQS = [
 
 function ContactContent() {
   const searchParams = useSearchParams();
-  const intentParam = searchParams.get('intent');
+  const intentParam = searchParams?.get('intent');
 
   const initialPathway = (intentParam && ['therapy', 'reclaim', 'coaching', 'lemmy-lou', 'general'].includes(intentParam))
     ? intentParam

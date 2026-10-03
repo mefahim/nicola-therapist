@@ -81,8 +81,8 @@ const TIME_SLOTS = [
 
 function DiscoveryCallContent() {
   const searchParams = useSearchParams();
-  const intentParam = searchParams.get('intent');
-  const packageParam = searchParams.get('package');
+  const intentParam = searchParams?.get('intent');
+  const packageParam = searchParams?.get('package');
 
   const initialPathway = (intentParam && ['therapy', 'reclaim', 'coaching', 'unsure'].includes(intentParam))
     ? intentParam

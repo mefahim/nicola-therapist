@@ -23,24 +23,28 @@ const PATHWAYS = [
     name: 'Trauma Therapy & EMDR',
     href: '/therapy',
     description: 'Childhood trauma, grief & nervous system regulation',
+    badge: 'Clinical 1:1',
     icon: HeartHandshake,
   },
   {
     name: 'The RECLAIM™ Method',
     href: '/reclaim',
     description: '6-stage framework to step out of survival mode',
+    badge: 'Proprietary Framework',
     icon: Compass,
   },
   {
     name: 'Transformational Coaching',
     href: '/coaching',
     description: 'Confidence, clean boundaries & aligned action',
+    badge: 'Forward-Focused',
     icon: Target,
   },
 ];
 
 export function Header() {
   const pathname = usePathname();
+  const currentPath = pathname || '';
   const { totalCount, setIsOpen } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -65,8 +69,8 @@ export function Header() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const isLemmyLouRoute = pathname.startsWith('/lemmy-lou-and-friends');
-  const isPathwayActive = ['/therapy', '/reclaim', '/coaching'].includes(pathname);
+  const isLemmyLouRoute = currentPath.startsWith('/lemmy-lou-and-friends');
+  const isPathwayActive = ['/therapy', '/reclaim', '/coaching'].includes(currentPath);
 
   return (
     <header
@@ -155,7 +159,7 @@ export function Header() {
                   <div className="bg-[#FFFFFF] rounded-2xl border border-[#F2DDD0] p-2.5 shadow-xl space-y-1">
                     {PATHWAYS.map((path) => {
                       const Icon = path.icon;
-                      const isActive = pathname === path.href;
+                      const isActive = currentPath === path.href;
                       return (
                         <Link
                           key={path.href}
@@ -197,7 +201,7 @@ export function Header() {
             <Link
               href="/resources"
               className={`transition-colors py-1 ${
-                pathname === '/resources' ? 'text-[#1C1E1B] font-semibold' : 'text-[#787672] hover:text-[#1C1E1B]'
+                currentPath === '/resources' ? 'text-[#1C1E1B] font-semibold' : 'text-[#787672] hover:text-[#1C1E1B]'
               }`}
             >
               Resources
@@ -206,7 +210,7 @@ export function Header() {
             <Link
               href="/lemmy-lou-and-friends"
               className={`transition-colors py-1 flex items-center gap-1 ${
-                pathname.startsWith('/lemmy-lou-and-friends')
+                currentPath.startsWith('/lemmy-lou-and-friends')
                   ? 'text-[#f43d86] font-semibold'
                   : 'text-[#0a8edb] hover:text-[#f43d86]'
               }`}
@@ -218,7 +222,7 @@ export function Header() {
             <Link
               href="/contact"
               className={`transition-colors py-1 ${
-                pathname === '/contact' ? 'text-[#1C1E1B] font-semibold' : 'text-[#787672] hover:text-[#1C1E1B]'
+                currentPath === '/contact' ? 'text-[#1C1E1B] font-semibold' : 'text-[#787672] hover:text-[#1C1E1B]'
               }`}
             >
               Contact

@@ -9,18 +9,24 @@ import {
   Award,
   HeartHandshake,
   Compass,
+  Sparkles,
+  Activity,
+  Mic,
+  Bookmark,
 } from 'lucide-react';
 
 export default function AboutPage() {
   return (
     <div className="bg-[#FAF8F5] text-[#1C1E1B] font-sans antialiased overflow-x-hidden selection:bg-[#FBE8DE] selection:text-[#A8543E]">
-      {/* 1. HERO: "MEET NICOLA" — INTIMATE & EDITORIAL */}
+      {/* ========================================================
+          1. HERO: "MEET NICOLA" — INTIMATE & EDITORIAL WITH POLAROID
+         ======================================================== */}
       <section className="relative pt-12 pb-16 md:pt-20 md:pb-24">
         {/* Soft Peach Warmth Aura */}
-        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[650px] h-[380px] bg-gradient-to-b from-[#FDECE0]/50 via-[#FDF3EB]/30 to-transparent blur-3xl pointer-events-none -z-0 rounded-full" />
+        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-gradient-to-b from-[#FDECE0]/60 via-[#FDF3EB]/35 to-transparent blur-3xl pointer-events-none -z-0 rounded-full" />
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
             {/* Left: Intimate Introduction */}
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#A8543E]">
@@ -65,10 +71,13 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Right: Large Personal Portrait */}
+            {/* Right: Primary Nicola Portrait + Floating Polaroid Memory Asset 1 */}
             <div className="lg:col-span-5 relative">
               <div className="relative mx-auto max-w-sm lg:max-w-none">
+                {/* Decorative subtle backdrop accent */}
                 <div className="absolute -inset-4 bg-gradient-to-tr from-[#FDF1E8] to-[#FBE8DB] border border-[#F2D7C8] rounded-3xl -rotate-1 -z-10 shadow-xs" />
+
+                {/* Primary Nicola Portrait */}
                 <div className="relative aspect-[3/4] w-full rounded-2xl overflow-hidden shadow-2xl border border-[#F2DDD0] bg-[#FAF5EE]">
                   <img
                     src="/images/nicola_portrait_1790954278431.jpg"
@@ -87,20 +96,45 @@ export default function AboutPage() {
                     </p>
                   </div>
                 </div>
+
+                {/* ASSET 1: Picture 1.png — Authentic Floating Polaroid Childhood Memory */}
+                <div className="absolute -bottom-8 -left-6 sm:-left-10 w-44 sm:w-52 bg-white p-2.5 pb-4 rounded-md shadow-xl border border-[#EAE3D6] rotate-[-5deg] hover:rotate-0 transition-transform duration-300 z-20 group">
+                  {/* Subtle tape effect at top */}
+                  <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-14 h-4 bg-[#EFE4D6]/70 backdrop-blur-xs border border-white/60 -rotate-1 rounded-2xs pointer-events-none" />
+                  
+                  <div className="aspect-square w-full overflow-hidden rounded-xs bg-[#F7F2EB] border border-[#EDE5DA]">
+                    <img
+                      src="/images/Picture 1.png"
+                      alt="Nicola Benyahia — Polaroid childhood memory"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  
+                  {/* Polaroid caption area */}
+                  <div className="pt-2.5 px-1 text-center">
+                    <span className="font-serif italic text-xs text-[#7A746B] tracking-tight block">
+                      Nicola &bull; Where the story began
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. THE CONTINUOUS VISUAL MEMOIR */}
+      {/* ========================================================
+          2. THE CONTINUOUS VISUAL MEMOIR
+         ======================================================== */}
       <main id="story-beginnings" className="relative border-t border-[#F0DDD0] py-16 md:py-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 md:space-y-36">
 
           {/* ========================================================
-              CHAPTER 01: Early Life (TEXT + IMAGE)
+              CHAPTER 01: Early Life (ASSET 2: Picture 2.png)
+              Asymmetric editorial storytelling composition
              ======================================================== */}
-          <section className="space-y-8">
+          <section className="space-y-10">
             <div className="space-y-3">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#A8543E]">
                 01 &bull; Early Life &amp; Learning to Adapt
@@ -110,31 +144,40 @@ export default function AboutPage() {
               </h2>
             </div>
 
-            <div className="space-y-4 text-base sm:text-lg text-[#55534E] leading-relaxed max-w-3xl">
-              <p>
-                Growing up in environments where emotional safety was not guaranteed taught me early on how to read the room, anticipate tension, and become who I needed to be to keep the peace.
-              </p>
-              <p>
-                Like many who experience childhood unpredictability or neglect, my earliest survival mechanism was adaptability. I learned how to minimise my own presence, anticipate unpredictable adult moods, and carry burdens that no child was ever meant to bear.
-              </p>
-              <p className="font-serif italic text-lg sm:text-xl text-[#A8543E] pt-1">
-                &ldquo;Those adaptations protected me at the time, but they planted seeds of deep disconnection from who I actually was.&rdquo;
-              </p>
-            </div>
-
-            {/* Large Story Image */}
-            <div className="pt-4">
-              <div className="relative aspect-[16/9] sm:aspect-[2/1] rounded-3xl overflow-hidden shadow-lg border border-[#F2DDD0] bg-[#FFF9F5]">
-                <img
-                  src="/images/coaching_reflection_1790954347039.jpg"
-                  alt="Thoughtful quiet reflection by natural window light"
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-6 text-white text-xs sm:text-sm font-medium">
-                  The quiet vigilance of survival &bull; Learning to read the room
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              {/* ASSET 2: Childhood Photograph of Nicola */}
+              <div className="lg:col-span-6 relative">
+                <div className="relative rounded-2xl overflow-hidden shadow-xl border border-[#F2DDD0] bg-[#FFF9F5] group">
+                  <div className="aspect-[4/3] w-full">
+                    <img
+                      src="/images/Picture 2.png"
+                      alt="Nicola during her childhood years"
+                      className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="p-4 bg-white/95 border-t border-[#F0DDD0] flex items-center justify-between">
+                    <span className="text-xs font-serif italic text-[#6B655B]">
+                      Early childhood years &bull; Quiet adaptability
+                    </span>
+                    <span className="text-[10px] uppercase font-semibold tracking-wider text-[#A8543E]">
+                      Archive Memoir
+                    </span>
+                  </div>
                 </div>
+              </div>
+
+              {/* Text Narrative */}
+              <div className="lg:col-span-6 space-y-5 text-base sm:text-lg text-[#55534E] leading-relaxed">
+                <p>
+                  Growing up in environments where emotional safety was not guaranteed taught me early on how to read the room, anticipate tension, and become who I needed to be to keep the peace.
+                </p>
+                <p>
+                  Like many who experience childhood unpredictability or neglect, my earliest survival mechanism was adaptability. I learned how to minimise my own presence, anticipate unpredictable adult moods, and carry burdens that no child was ever meant to bear.
+                </p>
+                <p className="font-serif italic text-lg sm:text-xl text-[#A8543E] pt-2">
+                  &ldquo;Those adaptations protected me at the time, but they planted seeds of deep disconnection from who I actually was.&rdquo;
+                </p>
               </div>
             </div>
           </section>
@@ -149,12 +192,13 @@ export default function AboutPage() {
           </div>
 
           {/* ========================================================
-              CHAPTER 02: Becoming a Prover (IMAGE + TEXT)
+              CHAPTER 02: FORMATIVE YEARS & BECOMING A PROVER (ASSET 6: Picture 6.png)
+              Dignified historical composition
              ======================================================== */}
-          <section className="space-y-8">
+          <section className="space-y-10">
             <div className="space-y-3">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#A8543E]">
-                02 &bull; Becoming a Prover
+                02 &bull; Formative Years &amp; Becoming a Prover
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1C1E1B] leading-tight">
                 The Mask of Achievement
@@ -162,38 +206,50 @@ export default function AboutPage() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              {/* Highlight Moment Left */}
-              <div className="lg:col-span-5">
-                <div className="p-8 rounded-3xl bg-gradient-to-br from-[#FFF9F5] to-[#FDF1E8] border border-[#F2DDD0] shadow-xs space-y-4">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#A8543E]">
-                    The Survival Strategy
-                  </span>
-                  <p className="font-serif italic text-xl text-[#A8543E] leading-snug">
-                    &ldquo;When you do not feel innately worthy simply for existing, you learn to prove your value through endless overfunctioning.&rdquo;
-                  </p>
-                  <p className="text-xs text-[#787672]">
-                    The reliable one &bull; The hyper-capable provider
-                  </p>
-                </div>
-              </div>
-
-              {/* Text Right */}
-              <div className="lg:col-span-7 space-y-4 text-base sm:text-lg text-[#55534E] leading-relaxed">
+              {/* Text Left */}
+              <div className="lg:col-span-7 space-y-5 text-base sm:text-lg text-[#55534E] leading-relaxed order-2 lg:order-1">
                 <p>
-                  In my young adulthood and early career, I became the reliable one. The person who had everything handled. Outwardly, I was achieving, stepping up, and providing answers for everyone around me.
+                  In my young adulthood and early career, I became the reliable one. The person who had everything handled. Outwardly, I was achieving, stepping up, taking on civic duties, and providing answers for everyone around me.
                 </p>
                 <p>
                   Inwardly, I lived with the gnawing terror that if I ever paused, dropped a ball, or showed vulnerability, everything would collapse.
                 </p>
+                <div className="p-6 rounded-2xl bg-gradient-to-br from-[#FFF9F5] to-[#FDF1E8] border border-[#F2DDD0] shadow-2xs space-y-2">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#A8543E]">
+                    The Survival Strategy
+                  </span>
+                  <p className="font-serif italic text-lg sm:text-xl text-[#A8543E] leading-snug">
+                    &ldquo;When you do not feel innately worthy simply for existing, you learn to prove your value through endless overfunctioning.&rdquo;
+                  </p>
+                </div>
                 <p>
                   It was a life lived in chronic survival mode disguised as success. So many of the capable professionals, leaders, and caregivers I work with today know this exact private exhaustion.
                 </p>
+              </div>
+
+              {/* ASSET 6: Picture 6.png — Formative Ceremonial History */}
+              <div className="lg:col-span-5 order-1 lg:order-2">
+                <div className="relative rounded-2xl overflow-hidden shadow-xl border border-[#F2DDD0] bg-[#FFF9F5] group">
+                  <div className="aspect-[4/3] w-full">
+                    <img
+                      src="/images/Picture 6.png"
+                      alt="Nicola during her formative years at an official ceremonial milestone"
+                      className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="p-4 bg-white/95 border-t border-[#F0DDD0]">
+                    <p className="text-xs font-serif italic text-[#6B655B]">
+                      Formative milestones &bull; Stepping into responsibility and public dedication
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
 
           {/* ========================================================
-              CHAPTER 03: Grief / Rupture (TEXT + IMAGE)
+              CHAPTER 03: GRIEF & RUPTURE (CONFRONTING HEARTBREAK)
              ======================================================== */}
           <section className="space-y-8">
             <div className="space-y-3">
@@ -205,7 +261,7 @@ export default function AboutPage() {
               </h2>
             </div>
 
-            <div className="space-y-4 text-base sm:text-lg text-[#55534E] leading-relaxed max-w-3xl">
+            <div className="space-y-5 text-base sm:text-lg text-[#55534E] leading-relaxed max-w-3xl">
               <p>
                 A catastrophic life event shattered my illusions of control and forced an undeniable confrontation with grief, mortality, and the raw truth of human suffering.
               </p>
@@ -215,22 +271,6 @@ export default function AboutPage() {
               <p className="font-serif italic text-lg sm:text-xl text-[#A8543E] pt-1">
                 &ldquo;It was during that dark, unvarnished period that I experienced what true trauma is—and discovered that you cannot simply think your way through heartbreak.&rdquo;
               </p>
-            </div>
-
-            {/* Large Atmospheric Image */}
-            <div className="pt-4">
-              <div className="relative aspect-[16/9] sm:aspect-[2/1] rounded-3xl overflow-hidden shadow-lg border border-[#F2DDD0] bg-[#FFF9F5]">
-                <img
-                  src="/images/reclaim_horizon_1790954314695.jpg"
-                  alt="Expansive dawn horizon over calm waters representing grief into light"
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-6 text-white text-xs sm:text-sm font-medium">
-                  Sitting in the ashes &bull; The beginning of true recovery
-                </div>
-              </div>
             </div>
           </section>
 
@@ -244,73 +284,106 @@ export default function AboutPage() {
           </div>
 
           {/* ========================================================
-              CHAPTER 04: Accepting Support (IMAGE + TEXT)
+              CHAPTER 04: FINDING HER VOICE / PROFESSIONAL JOURNEY (ASSET 5: Picture 5.png)
+              Strong editorial prominence — speaking at podium
              ======================================================== */}
-          <section className="space-y-8">
+          <section className="space-y-10">
             <div className="space-y-3">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#A8543E]">
-                04 &bull; Accepting Support
+                04 &bull; Finding My Voice &amp; Stepping Forward
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1C1E1B] leading-tight">
-                Letting Myself Be Held
+                From Silence to Public Advocacy
               </h2>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              {/* Image Left */}
-              <div className="lg:col-span-5">
-                <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border border-[#F2DDD0] bg-[#FFF9F5]">
-                  <img
-                    src="/images/therapy_space_1790954295028.jpg"
-                    alt="Serene, warm therapeutic holding space"
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                  <div className="absolute bottom-3 left-4 text-white text-xs font-medium">
-                    A safe, held container &bull; Without fixing or judgment
+              {/* ASSET 5: Picture 5.png — Speaking at Podium */}
+              <div className="lg:col-span-6 relative">
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-[#F2DDD0] bg-[#FFF9F5] group">
+                  <div className="aspect-[4/3] w-full">
+                    <img
+                      src="/images/Picture 5.png"
+                      alt="Nicola speaking at a podium, sharing insight and advocacy"
+                      className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="p-5 bg-white/95 border-t border-[#F0DDD0] space-y-1">
+                    <div className="flex items-center gap-2 text-[#A8543E]">
+                      <Mic className="w-3.5 h-3.5" />
+                      <span className="text-[11px] font-semibold uppercase tracking-wider">
+                        Finding Her Voice
+                      </span>
+                    </div>
+                    <p className="text-xs font-serif italic text-[#6B655B]">
+                      Speaking with conviction &bull; Transforming personal adversity into advocacy and collective healing
+                    </p>
                   </div>
                 </div>
               </div>
 
-              {/* Text Right */}
-              <div className="lg:col-span-7 space-y-4 text-base sm:text-lg text-[#55534E] leading-relaxed">
+              {/* Text Narrative */}
+              <div className="lg:col-span-6 space-y-5 text-base sm:text-lg text-[#55534E] leading-relaxed">
                 <p>
-                  For someone who had spent decades rescuing others, letting myself be held, seen, and supported was the most terrifying and liberating act of my life.
+                  Finding my voice did not happen overnight. It came from learning to speak the unspeakable—stepping onto public stages, addressing difficult truths, and refusing to allow shame or silence to hold the pen.
                 </p>
                 <p>
-                  Stepping into therapy as a client was humbling. I had to learn to allow another person into my pain without trying to fix them or reassure them that I was okay.
+                  Through public speaking, policy consultation, and clinical practice, I learned that sharing our unvarnished reality isn&apos;t just cathartic—it gives permission to everyone in the room to exhale and lay down their own hidden burdens.
                 </p>
-                <p>
-                  Through trauma-focused therapy and EMDR, I experienced the profound physiological shifts that occur when old memories are finally processed and released from the body. Survival was only half the journey; the true task was reclaiming myself.
+                <p className="font-serif italic text-lg text-[#A8543E]">
+                  &ldquo;When you speak truth without defense, you step out of survival into genuine authority.&rdquo;
                 </p>
               </div>
             </div>
           </section>
 
           {/* ========================================================
-              CHAPTER 05: Becoming a Therapist (TEXT + IMAGE)
+              CHAPTER 05: PERSONAL LIFE & RECOGNITION (ASSET 3: Picture 3.png)
+              Humanising, elegant milestone composition
              ======================================================== */}
-          <section className="space-y-8">
+          <section className="space-y-10">
             <div className="space-y-3">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#A8543E]">
-                05 &bull; Becoming a Therapist
+                05 &bull; Personal Life, Connection &amp; Recognition
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1C1E1B] leading-tight">
                 Lived Experience Meets Clinical Excellence
               </h2>
             </div>
 
-            <div className="space-y-4 text-base sm:text-lg text-[#55534E] leading-relaxed max-w-3xl">
-              <p>
-                My qualification was not born in an ivory tower; it was forged through the alchemy of real suffering, rigorous clinical training, and professional accreditation.
-              </p>
-              <p>
-                I dedicated years to clinical training, qualifying as an accredited counsellor with the British Association for Counselling and Psychotherapy (BACP), specializing in trauma and EMDR.
-              </p>
-              <p>
-                In 2020, I was honoured to be awarded an MBE for services to families, community, and mental health. This recognition solidified my life&apos;s commitment: to bring trauma-informed safety, dignity, and real empowerment to every person who crosses my path.
-              </p>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              {/* Text Left */}
+              <div className="lg:col-span-7 space-y-5 text-base sm:text-lg text-[#55534E] leading-relaxed">
+                <p>
+                  My qualification was not born in an ivory tower; it was forged through the alchemy of real suffering, rigorous clinical training, and professional accreditation.
+                </p>
+                <p>
+                  I dedicated years to clinical training, qualifying as an accredited counsellor with the British Association for Counselling and Psychotherapy (BACP), specializing in trauma and EMDR.
+                </p>
+                <p>
+                  In 2020, I was honoured to be awarded an MBE for services to families, community, and mental health. This recognition solidified my life&apos;s commitment: to bring trauma-informed safety, dignity, and real empowerment to every person who crosses my path.
+                </p>
+              </div>
+
+              {/* ASSET 3: Picture 3.png — Nicola at formal dinner/event */}
+              <div className="lg:col-span-5">
+                <div className="relative rounded-2xl overflow-hidden shadow-xl border border-[#F2DDD0] bg-[#FFF9F5] group">
+                  <div className="aspect-[4/3] w-full">
+                    <img
+                      src="/images/Picture 3.png"
+                      alt="Nicola Benyahia at a formal celebration dinner"
+                      className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="p-4 bg-white/95 border-t border-[#F0DDD0]">
+                    <p className="text-xs font-serif italic text-[#6B655B]">
+                      Celebrating life &bull; Genuine connection, warmth, and joy alongside professional dedication
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Quiet Honour Note */}
@@ -330,12 +403,64 @@ export default function AboutPage() {
           </section>
 
           {/* ========================================================
-              CHAPTER 06: Why RECLAIM & Lemmy Lou Exist (IMAGE + TEXT)
+              CHAPTER 06: RESILIENCE & LIFE OUTSIDE WORK (ASSET 4: Picture 4.png)
+              Strong visual break — running / endurance / wholeness
              ======================================================== */}
           <section className="space-y-8">
             <div className="space-y-3">
+              <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#4E6551]">
+                <Activity className="w-3.5 h-3.5 text-[#4E6551]" />
+                <span>06 &bull; Life Beyond the Practice</span>
+              </div>
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1C1E1B] leading-tight">
+                Resilience, Movement &amp; The Whole Person
+              </h2>
+            </div>
+
+            {/* Wide memorable panoramic photograph */}
+            <div className="pt-2">
+              <div className="relative aspect-[16/9] sm:aspect-[21/9] rounded-3xl overflow-hidden shadow-2xl border border-[#E4DCD3] bg-[#F7F4EE] group">
+                <img
+                  src="/images/Picture 4.png"
+                  alt="Nicola running outdoors, embracing movement, endurance, and vitality"
+                  className="w-full h-full object-cover object-center group-hover:scale-102 transition-transform duration-700"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
+                <div className="absolute bottom-5 left-6 right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-2 text-white">
+                  <div>
+                    <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#E2947A]">
+                      Life Outside Work
+                    </span>
+                    <p className="font-serif text-lg sm:text-xl font-medium">
+                      Movement as grounded medicine &bull; Breath, strength, and quiet rhythm
+                    </p>
+                  </div>
+                  <span className="text-xs text-white/80 font-sans">
+                    Therapist &bull; Athlete &bull; Whole Human
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Contemplative Short Text with Generous Whitespace */}
+            <div className="max-w-2xl mx-auto text-center pt-2 space-y-4">
+              <p className="text-base sm:text-lg text-[#55534E] leading-relaxed">
+                Therapy is only one expression of who I am. Running and regular physical movement give me the grounded vitality to hold profound space for others without burning out.
+              </p>
+              <p className="font-serif italic text-lg sm:text-xl text-[#A8543E]">
+                &ldquo;Healing is not about becoming a perfect practitioner; it is about living fully in your body, feeling the breeze on your face, and having the stamina to keep showing up.&rdquo;
+              </p>
+            </div>
+          </section>
+
+          {/* ========================================================
+              CHAPTER 07: WHY RECLAIM & LEMMY LOU EXIST
+             ======================================================== */}
+          <section className="space-y-10">
+            <div className="space-y-3">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#A8543E]">
-                06 &bull; Why This Work Exists
+                07 &bull; Why This Work Exists
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1C1E1B] leading-tight">
                 Healing Adults, Protecting Children
@@ -343,7 +468,7 @@ export default function AboutPage() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              {/* Image Left */}
+              {/* Meaningful contextual image for children/Lemmy Lou */}
               <div className="lg:col-span-5">
                 <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border border-[#F2DDD0] bg-[#FFF9F5]">
                   <img
@@ -377,7 +502,10 @@ export default function AboutPage() {
         </div>
       </main>
 
-      {/* 3. HOW THIS SHAPES MY WORK & CLINICAL STANDARDS */}
+      {/* ========================================================
+          3. PROFESSIONAL CREDENTIALS & STANDARDS
+          Follows the story naturally (Person -> Story -> Experience -> Expertise)
+         ======================================================== */}
       <section className="py-16 md:py-24 bg-[#1C1E1B] text-[#ECE7DE]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center max-w-2xl mx-auto space-y-3">
@@ -427,7 +555,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 4. WAYS TO WORK WITH NICOLA & NEXT STEPS */}
+      {/* ========================================================
+          4. WAYS TO WORK WITH NICOLA & NEXT STEPS
+         ======================================================== */}
       <section className="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
         <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#A8543E]">
           Next Steps
