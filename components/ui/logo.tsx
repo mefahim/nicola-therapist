@@ -16,11 +16,11 @@ export function Logo({ className = '', variant = 'full', subtext = true }: LogoP
       className={`group inline-flex items-center gap-3.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8543E] rounded-md transition-opacity ${className}`}
       aria-label="Nicola Benyahia — Home"
     >
-      {/* Exquisite Metallic Interlocking NB Monogram */}
-      <div className="relative flex-shrink-0 w-10 h-10 md:w-11 md:h-11">
+      {/* Exquisite Metallic Interlocking NB Monogram nestled in warm peach/cream aura */}
+      <div className="relative flex-shrink-0 w-10 h-10 md:w-11 md:h-11 rounded-xl p-1 bg-gradient-to-br from-[#FFF9F5] via-[#FDF3EC] to-[#FBECE2] border border-[#F4DDD0] shadow-xs flex items-center justify-center transition-all duration-300 group-hover:border-[#E5B59C] group-hover:shadow-sm">
         <svg
           viewBox="0 0 120 120"
-          className="w-full h-full drop-shadow-sm transition-transform duration-300 group-hover:scale-105"
+          className="w-full h-full drop-shadow-xs transition-transform duration-300 group-hover:scale-105"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -33,11 +33,11 @@ export function Logo({ className = '', variant = 'full', subtext = true }: LogoP
               <stop offset="100%" stopColor="#A8823B" />
             </linearGradient>
 
-            {/* Rose gold gradient for 'B' */}
+            {/* Warm peach & rose gold gradient for 'B' to blend with branding */}
             <linearGradient id="roseGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#D99B82" />
-              <stop offset="40%" stopColor="#C47D62" />
-              <stop offset="80%" stopColor="#E8B5A2" />
+              <stop offset="0%" stopColor="#E2947A" />
+              <stop offset="35%" stopColor="#C6765B" />
+              <stop offset="75%" stopColor="#F0BCAB" />
               <stop offset="100%" stopColor="#A05A42" />
             </linearGradient>
 

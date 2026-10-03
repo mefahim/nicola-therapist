@@ -36,12 +36,15 @@ export default function HomePage() {
     <div className="space-y-24 md:space-y-36 pb-24 overflow-hidden">
       {/* 1. HERO SECTION */}
       <section className="relative pt-8 md:pt-16">
+        {/* Soft Peach Ambient Glow for Warm Brand Harmony */}
+        <div className="absolute top-8 left-1/2 -translate-x-1/2 w-[650px] h-[380px] bg-gradient-to-b from-[#FDECE0]/55 via-[#FDF3EB]/30 to-transparent blur-3xl pointer-events-none -z-10 rounded-full" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             {/* Left Column: Positioning & Emotional Message */}
             <div className="lg:col-span-7 space-y-6 md:space-y-8">
               <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#A8543E]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#A8543E]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#E2947A]" />
                 TRAUMA THERAPY &bull; RECLAIM™ &bull; COACHING
               </div>
 
@@ -69,7 +72,7 @@ export default function HomePage() {
 
                 <a
                   href="#pathways"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white border border-[#D8D4CC] text-[#1C1E1B] hover:bg-[#F2EFE9] text-xs font-semibold uppercase tracking-wider rounded-md transition-colors"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white border border-[#E8D4C8] text-[#1C1E1B] hover:bg-[#FDF6F0] text-xs font-semibold uppercase tracking-wider rounded-md transition-colors"
                 >
                   <span>Explore Ways I Can Help</span>
                   <ArrowRight className="w-4 h-4 text-[#A8543E]" />
@@ -77,7 +80,7 @@ export default function HomePage() {
               </div>
 
               {/* Trust Anchor / Credentials Strip */}
-              <div className="pt-6 border-t border-[#ECE7DE] flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-[#787672]">
+              <div className="pt-6 border-t border-[#F2DDD0] flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-[#787672]">
                 <div className="flex items-center gap-1.5 text-[#1C1E1B] font-semibold">
                   <ShieldCheck className="w-4 h-4 text-[#A8543E]" />
                   <span>Nicola Benyahia MBE</span>
@@ -94,8 +97,8 @@ export default function HomePage() {
             {/* Right Column: Editorial Portrait */}
             <div className="lg:col-span-5 relative">
               <div className="relative mx-auto max-w-md lg:max-w-none">
-                <div className="absolute -inset-4 bg-[#EBF0EA] rounded-3xl -rotate-1 -z-10" />
-                <div className="relative aspect-[3/4] w-full rounded-2xl overflow-hidden shadow-xl border border-[#ECE7DE] bg-[#ECE7DE]">
+                <div className="absolute -inset-4 bg-gradient-to-tr from-[#FDF1E8] to-[#FBE8DB] border border-[#F2D7C8] rounded-3xl -rotate-1 -z-10 shadow-xs" />
+                <div className="relative aspect-[3/4] w-full rounded-2xl overflow-hidden shadow-xl border border-[#F2DDD0] bg-[#FAF5EE]">
                   <img
                     src="/images/nicola_portrait_1790954278431.jpg"
                     alt="Nicola Benyahia MBE — Trauma Therapist, Coach and Creator of RECLAIM"
@@ -117,7 +120,7 @@ export default function HomePage() {
       </section>
 
       {/* 2. THE PROBLEM / SELF-RECOGNITION */}
-      <section className="bg-[#FAF8F5] border-y border-[#ECE7DE] py-20 md:py-28">
+      <section className="bg-[#FDF7F2] border-y border-[#F3DDD0] py-20 md:py-28">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#A8543E]">
@@ -132,7 +135,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-2xl border border-[#ECE7DE] p-7 space-y-4 shadow-xs flex flex-col justify-between">
+            <div className="bg-white rounded-2xl border border-[#F2DDD0] p-7 space-y-4 shadow-xs hover:border-[#E5B59C] transition-colors flex flex-col justify-between">
               <div className="space-y-3">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#A8543E]">01</span>
                 <h3 className="font-serif text-xl font-semibold text-[#1C1E1B]">
@@ -142,7 +145,7 @@ export default function HomePage() {
                   Outwardly, you have everything handled. You achieve, provide, and show up reliably for everyone. Inwardly, you live with exhaustion, chronic vigilance, and fear that dropping a single ball will unravel your safety.
                 </p>
               </div>
-              <div className="pt-3 border-t border-[#F2EFE9]">
+              <div className="pt-3 border-t border-[#F8ECE3]">
                 <Link
                   href="/therapy"
                   className="text-xs font-semibold text-[#A8543E] hover:underline flex items-center gap-1"
@@ -153,7 +156,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl border border-[#ECE7DE] p-7 space-y-4 shadow-xs flex flex-col justify-between">
+            <div className="bg-[#FFFDFB] rounded-2xl border border-[#E5B59C] p-7 space-y-4 shadow-xs hover:shadow-sm transition-all flex flex-col justify-between relative">
               <div className="space-y-3">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#A8543E]">02</span>
                 <h3 className="font-serif text-xl font-semibold text-[#1C1E1B]">
@@ -163,7 +166,7 @@ export default function HomePage() {
                   Saying &ldquo;no&rdquo; triggers acute panic, guilt, or fear of abandonment. You adapt to keep the peace, managing other people&apos;s emotions while quietly abandoning your own needs and boundaries.
                 </p>
               </div>
-              <div className="pt-3 border-t border-[#F2EFE9]">
+              <div className="pt-3 border-t border-[#F8ECE3]">
                 <Link
                   href="/reclaim"
                   className="text-xs font-semibold text-[#A8543E] hover:underline flex items-center gap-1"
@@ -174,7 +177,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl border border-[#ECE7DE] p-7 space-y-4 shadow-xs flex flex-col justify-between">
+            <div className="bg-white rounded-2xl border border-[#F2DDD0] p-7 space-y-4 shadow-xs hover:border-[#E5B59C] transition-colors flex flex-col justify-between">
               <div className="space-y-3">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#A8543E]">03</span>
                 <h3 className="font-serif text-xl font-semibold text-[#1C1E1B]">
@@ -184,7 +187,7 @@ export default function HomePage() {
                   Despite proven achievements, you constantly second-guess yourself, fear being exposed as inadequate, and freeze when stepping into greater leadership or visibility.
                 </p>
               </div>
-              <div className="pt-3 border-t border-[#F2EFE9]">
+              <div className="pt-3 border-t border-[#F8ECE3]">
                 <Link
                   href="/coaching"
                   className="text-xs font-semibold text-[#4E6551] hover:underline flex items-center gap-1"
@@ -266,20 +269,20 @@ export default function HomePage() {
           </div>
 
           {/* Pathway 2: RECLAIM */}
-          <div className="bg-[#FAF8F5] rounded-2xl border-2 border-[#A8543E]/30 p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow relative">
+          <div className="bg-gradient-to-b from-[#FFFDFB] to-[#FDF5EE] rounded-2xl border-2 border-[#E8A88E] p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow relative">
             <div className="space-y-6">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded bg-[#A8543E] text-white">
+                <span className="text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded bg-[#DE7C5A] text-white">
                   Signature Method
                 </span>
-                <Compass className="w-5 h-5 text-[#A8543E]" />
+                <Compass className="w-5 h-5 text-[#DE7C5A]" />
               </div>
 
               <div>
                 <h3 className="font-serif text-2xl font-semibold text-[#1C1E1B]">
                   The RECLAIM™ Method
                 </h3>
-                <p className="font-serif italic text-xs text-[#A8543E] mt-1">
+                <p className="font-serif italic text-xs text-[#DE7C5A] mt-1">
                   From surviving your past to creating your future
                 </p>
               </div>
@@ -288,7 +291,7 @@ export default function HomePage() {
                 A structured 6-stage recovery journey for capable adults ready to unpack survival patterns, dismantle people-pleasing, establish boundaries, and reconnect with their authentic voice.
               </p>
 
-              <div className="space-y-1.5 pt-3 border-t border-[#ECE7DE] text-xs text-[#787672]">
+              <div className="space-y-1.5 pt-3 border-t border-[#F4DDD0] text-xs text-[#787672]">
                 <p className="font-semibold text-[#1C1E1B] text-[11px] uppercase tracking-wider">
                   Available Formats:
                 </p>
@@ -298,7 +301,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="pt-8 border-t border-[#ECE7DE] mt-6">
+            <div className="pt-8 border-t border-[#F4DDD0] mt-6">
               <Link
                 href="/reclaim"
                 className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-[#A8543E] hover:bg-[#8D4431] text-white text-xs font-semibold uppercase tracking-wider rounded-md transition-colors shadow-xs"
@@ -355,7 +358,7 @@ export default function HomePage() {
         </div>
 
         {/* Self-Assessment Helper: Which Pathway Fits? */}
-        <div className="bg-[#FAF8F5] rounded-3xl border border-[#ECE7DE] p-6 sm:p-10 space-y-6">
+        <div className="bg-[#FDF7F2] rounded-3xl border border-[#F3DDD0] p-6 sm:p-10 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <span className="text-[10px] font-bold uppercase tracking-wider text-[#A8543E]">

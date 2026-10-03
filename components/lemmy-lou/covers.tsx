@@ -6,7 +6,7 @@ interface BookCoverProps {
   id: string;
   title: string;
   subtitle?: string;
-  themeColor?: 'blush' | 'sky' | 'mint' | 'stone' | 'terracotta' | 'sage';
+  themeColor?: 'blush' | 'sky' | 'mint' | 'lavender' | 'peach' | 'stone' | 'terracotta' | 'sage';
   className?: string;
 }
 
@@ -22,6 +22,8 @@ export function LemmyLouBookCover({
     blush: 'from-[#ffe9f0] via-[#fff5f8] to-[#ffdce7] border-[#f8c5d6]',
     sky: 'from-[#e5f5ff] via-[#f0f9ff] to-[#d6efff] border-[#b8e2ff]',
     mint: 'from-[#e7f7e5] via-[#f2faf1] to-[#d7f2d4] border-[#bce8b7]',
+    lavender: 'from-[#eeefff] via-[#f5f6ff] to-[#e0e4ff] border-[#c8ceff]',
+    peach: 'from-[#fff0e8] via-[#fff5ef] to-[#fee2d4] border-[#fed1bb]',
     stone: 'from-[#F7F4EE] via-[#FAF8F5] to-[#ECE7DE] border-[#DDD7CD]',
     terracotta: 'from-[#FAF0EC] via-[#FDF7F5] to-[#F3E2DC] border-[#E8C4B8]',
     sage: 'from-[#EFF4EE] via-[#F7FAF6] to-[#E2EBE1] border-[#C8D9C6]',
@@ -31,6 +33,8 @@ export function LemmyLouBookCover({
     blush: 'bg-[#f43d86] text-white',
     sky: 'bg-[#0a8edb] text-white',
     mint: 'bg-[#43ad59] text-white',
+    lavender: 'bg-[#5b67de] text-white',
+    peach: 'bg-[#e86e45] text-white',
     stone: 'bg-[#787672] text-white',
     terracotta: 'bg-[#A8543E] text-white',
     sage: 'bg-[#4E6551] text-white',

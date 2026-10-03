@@ -76,7 +76,7 @@ export function Header() {
       className={`sticky top-0 z-40 transition-all duration-300 py-3 ${
         isLemmyLouRoute
           ? 'bg-white/95 backdrop-blur-md border-b border-[#e3ebf5]'
-          : 'bg-[#FBF9F5]/95 backdrop-blur-md border-b border-[#ECE7DE]'
+          : 'bg-[#FDFBF8]/95 backdrop-blur-md border-b border-[#F2E5DC] shadow-[0_1px_3px_rgba(226,148,122,0.05)]'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -155,8 +155,8 @@ export function Header() {
 
               {dropdownOpen && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-80 xl:w-96 z-50">
-                  <div className="bg-white rounded-2xl border border-[#ECE7DE] p-3 shadow-xl space-y-1">
-                    <div className="px-3 py-2 border-b border-[#F2EFE9]">
+                  <div className="bg-[#FFFFFF] rounded-2xl border border-[#F2DDD0] p-3 shadow-xl space-y-1">
+                    <div className="px-3 py-2 border-b border-[#F7EBE1]">
                       <p className="text-[10px] font-semibold uppercase tracking-wider text-[#A8543E]">
                         Choose Your Support Pathway
                       </p>
@@ -173,10 +173,10 @@ export function Header() {
                           key={path.href}
                           href={path.href}
                           className={`flex items-start gap-3 p-3 rounded-xl transition-colors ${
-                            isActive ? 'bg-[#FAF0EC] text-[#1C1E1B]' : 'hover:bg-[#FAF8F5] text-[#55534E]'
+                            isActive ? 'bg-[#FDF1E8] text-[#1C1E1B]' : 'hover:bg-[#FDF6F0] text-[#55534E]'
                           }`}
                         >
-                          <div className="w-8 h-8 rounded-lg bg-[#FAF8F5] border border-[#ECE7DE] text-[#A8543E] flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <div className="w-8 h-8 rounded-lg bg-[#FDF6F0] border border-[#F4DDD0] text-[#A8543E] flex items-center justify-center flex-shrink-0 mt-0.5">
                             <Icon className="w-4 h-4" />
                           </div>
                           <div className="flex-1 min-w-0">
