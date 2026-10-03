@@ -60,11 +60,10 @@ export default function LemmyLouPage() {
       badgeBg: 'bg-[#F43D86] text-white',
       buttonBg: 'bg-[#F43D86] hover:bg-[#D92C73] text-white',
       lightChip: 'bg-white/80 text-[#B3205E] border border-[#FFD2E2]',
-      helpsWith: [
+      hook: 'A comforting, colourful workbook that helps children identify, draw, and talk through big feelings without fear or shame.',
+      keyPurposes: [
         'Recognising and naming primary emotions (joy, anger, sadness, fear)',
-        'Connecting body sensations (tummy flutters, tense shoulders) to feelings',
-        'Gentle, creative drawing prompts to express what words cannot',
-        'Fosters warm emotional dialogue between children and caregivers',
+        'Connecting feelings to body sensations with gentle drawing prompts',
       ],
       age: 'Ages 4–10 · Home, Classrooms & Clinic Rooms',
     },
@@ -78,11 +77,10 @@ export default function LemmyLouPage() {
       badgeBg: 'bg-[#0A8EDB] text-white',
       buttonBg: 'bg-[#0A8EDB] hover:bg-[#0877B8] text-white',
       lightChip: 'bg-white/80 text-[#076296] border border-[#BDE2FE]',
-      helpsWith: [
-        'Fun, memorable breathwork adventures (hot chocolate breathing, feather floating)',
-        'Sensory grounding strategies to soothe nervous system overwhelm',
-        'Physical relaxation scripts designed for bedtime or classroom transitions',
-        'Helps little bodies return from fight-or-flight to safety and rest',
+      hook: 'Playful grounding and breathwork adventures that gently guide overwhelmed bodies back to safety, peace, and rest.',
+      keyPurposes: [
+        'Memorable breathwork games (hot chocolate breathing & ocean floating)',
+        'Sensory grounding techniques for bedtime or classroom transitions',
       ],
       age: 'Ages 3–9 · Mindful calming, sensory needs & bedtime',
     },
@@ -96,11 +94,10 @@ export default function LemmyLouPage() {
       badgeBg: 'bg-[#3DAE55] text-white',
       buttonBg: 'bg-[#3DAE55] hover:bg-[#329246] text-white',
       lightChip: 'bg-white/80 text-[#287037] border border-[#C1EBC0]',
-      helpsWith: [
-        'Discovering unique individual strengths and core personal values',
-        'Celebrating neurodiversity, varied abilities, and diverse cultures',
-        'Reframing mistakes as natural, courageous learning moments',
-        'Building a resilient, warm, and self-compassionate inner voice',
+      hook: 'An uplifting guide that celebrates unique strengths, neurodiversity, and learning to treat yourself with unconditional kindness.',
+      keyPurposes: [
+        'Discovering personal strengths and core identity values',
+        'Reframing mistakes as brave opportunities for growth',
       ],
       age: 'Ages 5–11 · Self-esteem, confidence & resilience',
     },
@@ -114,11 +111,10 @@ export default function LemmyLouPage() {
       badgeBg: 'bg-[#5B67DE] text-white',
       buttonBg: 'bg-[#5B67DE] hover:bg-[#4853BF] text-white',
       lightChip: 'bg-white/80 text-[#434DA8] border border-[#CFD6FF]',
-      helpsWith: [
-        'Normalises that everyone experiences worry, doubt, or anxious flutters',
-        'Illustrates how talking to a trusted friend or adult shrinks the worry cloud',
-        'Provides step-by-step calming questions when thoughts feel overwhelming',
-        'Includes an interactive Worry Cloud breathing bookmark and discussion guide',
+      hook: 'A gentle story showing children that worries grow when kept inside, and shrink into sunshine when shared with trusted friends.',
+      keyPurposes: [
+        'Normalising worries and situational anxiety for young minds',
+        'Encouraging open conversations with trusted adults and caregivers',
       ],
       age: 'Ages 3–8 · Hardcover picture storybook for anxiety',
     },
@@ -132,11 +128,10 @@ export default function LemmyLouPage() {
       badgeBg: 'bg-[#E86E45] text-white',
       buttonBg: 'bg-[#E86E45] hover:bg-[#CA5A33] text-white',
       lightChip: 'bg-white/80 text-[#A64522] border border-[#FED4C0]',
-      helpsWith: [
-        'Teaches body autonomy and personal consent in a gentle, positive story',
-        'Shows that saying "no" to unwanted tickles, games, or hugs is courageous',
-        'Proves that having boundaries does not mean being unkind or selfish',
-        'Empowers peers and adults to listen to and respect children\'s voices',
+      hook: 'An empowering story teaching body autonomy, showing that saying a kind "no" protects your peace and is an act of bravery.',
+      keyPurposes: [
+        'Teaching personal boundaries and body autonomy positively',
+        'Proving that saying "no" is courageous, not unkind',
       ],
       age: 'Ages 4–9 · Boundaries, body safety & assertiveness',
     },
@@ -391,18 +386,18 @@ export default function LemmyLouPage() {
                 className={`rounded-[36px] border-2 ${item.borderCard} ${item.bgCard} p-6 sm:p-10 md:p-12 shadow-sm transition-all relative overflow-hidden`}
               >
                 <div
-                  className={`grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center ${
+                  className={`grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-14 items-center ${
                     isReversed ? 'lg:grid-flow-dense' : ''
                   }`}
                 >
-                  {/* Visual Side: Large Book Cover */}
+                  {/* Visual Side: Large Dominant Book Cover with generous breathing room */}
                   <div
-                    className={`lg:col-span-5 flex justify-center ${
+                    className={`lg:col-span-5 flex justify-center py-4 ${
                       isReversed ? 'lg:col-start-8' : ''
                     }`}
                   >
-                    <div className="w-full max-w-xs sm:max-w-sm">
-                      <div className="relative transform hover:scale-103 transition-transform duration-300 drop-shadow-xl">
+                    <div className="w-full max-w-[280px] sm:max-w-[340px] md:max-w-[380px]">
+                      <div className="relative transform hover:scale-104 transition-transform duration-300 drop-shadow-2xl">
                         <LemmyLouBookCover
                           id={book.id}
                           title={book.title}
@@ -410,9 +405,9 @@ export default function LemmyLouPage() {
                           themeColor={item.coverTheme}
                           className="w-full shadow-2xl"
                         />
-                        {/* Decorative Badge */}
+                        {/* Distinct Colour Label */}
                         <div
-                          className={`absolute -top-3 -right-3 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider shadow-sm ${item.badgeBg}`}
+                          className={`absolute -top-3 -right-2 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider shadow-sm ${item.badgeBg}`}
                         >
                           Book 0{idx + 1} &bull; {item.colorName}
                         </div>
@@ -422,22 +417,15 @@ export default function LemmyLouPage() {
 
                   {/* Editorial Content Side */}
                   <div
-                    className={`lg:col-span-7 space-y-6 ${
+                    className={`lg:col-span-7 space-y-5 ${
                       isReversed ? 'lg:col-start-1' : ''
                     }`}
                   >
                     {/* Header info */}
-                    <div className="space-y-2">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span
-                          className={`text-xs font-bold px-3 py-1 rounded-full ${item.lightChip}`}
-                        >
-                          {item.age}
-                        </span>
-                        <span className="text-xs font-bold text-[#787672]">
-                          {book.format}
-                        </span>
-                      </div>
+                    <div className="space-y-1.5">
+                      <span className={`inline-block text-xs font-bold px-3 py-1 rounded-full ${item.lightChip}`}>
+                        {item.age}
+                      </span>
 
                       <h3 className="font-extrabold text-2xl sm:text-3xl md:text-4xl text-[#163A75] tracking-tight leading-tight">
                         {book.title}
@@ -448,27 +436,22 @@ export default function LemmyLouPage() {
                       </p>
                     </div>
 
-                    {/* Short Emotional Description */}
-                    <p className="text-sm sm:text-base text-[#163A75]/90 leading-relaxed font-normal">
-                      {book.description} {book.longDescription}
+                    {/* Short Emotional Hook */}
+                    <p className="text-base sm:text-lg text-[#163A75]/90 leading-relaxed font-normal">
+                      {item.hook}
                     </p>
 
-                    {/* What Children Learn / What It Helps With */}
-                    <div className="space-y-3 pt-2">
-                      <h4 className="text-xs font-extrabold uppercase tracking-wider text-[#163A75]">
-                        What this book helps with:
-                      </h4>
-                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-[#163A75]">
-                        {item.helpsWith.map((bullet, bIdx) => (
-                          <li key={bIdx} className="flex items-start gap-2 bg-white/70 p-2.5 rounded-xl border border-white/80">
-                            <CheckCircle className={`w-4 h-4 flex-shrink-0 mt-0.5 ${item.accentColor}`} />
-                            <span className="leading-snug">{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    {/* Exactly 2 Key Emotional Purposes */}
+                    <ul className="space-y-2 pt-1 text-xs sm:text-sm text-[#163A75]">
+                      {item.keyPurposes.map((purpose, pIdx) => (
+                        <li key={pIdx} className="flex items-center gap-2.5 bg-white/75 px-3.5 py-2.5 rounded-xl border border-white/80">
+                          <CheckCircle className={`w-4 h-4 flex-shrink-0 ${item.accentColor}`} />
+                          <span className="font-medium leading-snug">{purpose}</span>
+                        </li>
+                      ))}
+                    </ul>
 
-                    {/* Pricing & Dual CTA */}
+                    {/* Pricing & Clean Actions */}
                     <div className="pt-4 border-t border-black/5 flex flex-wrap items-center justify-between gap-4">
                       <div>
                         <span className="text-2xl sm:text-3xl font-black text-[#163A75]">
@@ -484,7 +467,7 @@ export default function LemmyLouPage() {
                           href={`/product/${book.id}`}
                           className="px-5 py-3 bg-white hover:bg-white/80 text-[#163A75] font-bold text-xs uppercase tracking-wider rounded-full border border-black/10 transition-colors shadow-2xs"
                         >
-                          View Details
+                          View Book
                         </Link>
 
                         <button
@@ -492,7 +475,7 @@ export default function LemmyLouPage() {
                           className={`px-6 py-3 font-extrabold text-xs uppercase tracking-wider rounded-full shadow-md transition-all flex items-center gap-2 ${item.buttonBg}`}
                         >
                           <ShoppingBag className="w-4 h-4" />
-                          <span>{addedId === book.id ? 'Added! ✓' : `Add to Bag &bull; ${book.price}`}</span>
+                          <span>{addedId === book.id ? 'Added! ✓' : `Add to Bag • ${book.price}`}</span>
                         </button>
                       </div>
                     </div>

@@ -22,22 +22,19 @@ const PATHWAYS = [
   {
     name: 'Trauma Therapy & EMDR',
     href: '/therapy',
-    description: 'Clinical trauma processing, nervous system regulation & emotional safety',
-    badge: 'Clinical 1:1',
+    description: 'Childhood trauma, grief & nervous system regulation',
     icon: HeartHandshake,
   },
   {
     name: 'The RECLAIM™ Method',
     href: '/reclaim',
-    description: 'Signature 6-stage framework for capable adults ready to step out of survival mode',
-    badge: 'Signature Method',
+    description: '6-stage framework to step out of survival mode',
     icon: Compass,
   },
   {
     name: 'Transformational Coaching',
     href: '/coaching',
-    description: 'Forward-focused partnership for confidence, boundaries & aligned action',
-    badge: 'Forward-Focused',
+    description: 'Confidence, clean boundaries & aligned action',
     icon: Target,
   },
 ];
@@ -154,17 +151,8 @@ export function Header() {
               </button>
 
               {dropdownOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-80 xl:w-96 z-50">
-                  <div className="bg-[#FFFFFF] rounded-2xl border border-[#F2DDD0] p-3 shadow-xl space-y-1">
-                    <div className="px-3 py-2 border-b border-[#F7EBE1]">
-                      <p className="text-[10px] font-semibold uppercase tracking-wider text-[#A8543E]">
-                        Choose Your Support Pathway
-                      </p>
-                      <p className="text-[11px] text-[#787672] mt-0.5">
-                        Clear clinical, personal recovery, and coaching distinctions
-                      </p>
-                    </div>
-
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-76 sm:w-84 z-50">
+                  <div className="bg-[#FFFFFF] rounded-2xl border border-[#F2DDD0] p-2.5 shadow-xl space-y-1">
                     {PATHWAYS.map((path) => {
                       const Icon = path.icon;
                       const isActive = pathname === path.href;
@@ -172,7 +160,7 @@ export function Header() {
                         <Link
                           key={path.href}
                           href={path.href}
-                          className={`flex items-start gap-3 p-3 rounded-xl transition-colors ${
+                          className={`flex items-start gap-3 p-2.5 rounded-xl transition-colors ${
                             isActive ? 'bg-[#FDF1E8] text-[#1C1E1B]' : 'hover:bg-[#FDF6F0] text-[#55534E]'
                           }`}
                         >
@@ -180,15 +168,10 @@ export function Header() {
                             <Icon className="w-4 h-4" />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <div className="flex items-center justify-between">
-                              <span className="font-serif text-sm font-semibold text-[#1C1E1B]">
-                                {path.name}
-                              </span>
-                              <span className="text-[9px] uppercase tracking-wider font-semibold text-[#787672] bg-[#FAF8F5] px-1.5 py-0.5 rounded">
-                                {path.badge}
-                              </span>
-                            </div>
-                            <p className="text-[11px] text-[#787672] line-clamp-2 mt-0.5 leading-snug">
+                            <span className="font-serif text-sm font-semibold text-[#1C1E1B] block leading-snug">
+                              {path.name}
+                            </span>
+                            <p className="text-[11px] text-[#787672] mt-0.5 leading-snug">
                               {path.description}
                             </p>
                           </div>
@@ -196,13 +179,13 @@ export function Header() {
                       );
                     })}
 
-                    <div className="pt-2 border-t border-[#F2EFE9] px-3 py-1.5 flex items-center justify-between">
-                      <span className="text-[11px] text-[#787672]">Unsure which is right?</span>
+                    <div className="pt-2 border-t border-[#F7EBE1] px-2.5 py-1.5 flex items-center justify-between text-xs">
+                      <span className="text-[#787672] text-[11px]">Not sure?</span>
                       <Link
                         href="/discovery-call"
-                        className="text-[11px] font-semibold text-[#A8543E] hover:underline flex items-center gap-1"
+                        className="font-semibold text-[#A8543E] hover:underline flex items-center gap-1 text-[11px]"
                       >
-                        <span>Discuss on a free call</span>
+                        <span>Book a Discovery Call</span>
                         <ArrowRight className="w-3 h-3" />
                       </Link>
                     </div>
